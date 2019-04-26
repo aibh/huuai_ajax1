@@ -50,4 +50,17 @@ function NguoiDungService(){
 
         return mangTimKiem;
     }
+    this.layViTriNguoiDung = function(taiKhoan){
+        // var vitri; 
+        var danhSachNguoiDung = JSON.parse(localStorage.getItem("danhSachNguoiDung"));
+        // danhSachNguoiDung.map(function(item, index){
+        //    if(item.TaiKhoan === taiKhoan){
+        //        vitri = index;
+        //     return vitri;
+        //    }
+    //    })
+    return danhSachNguoiDung.findIndex(function(item){
+        return item.TaiKhoan === taiKhoan;
+    })
+    }
 }

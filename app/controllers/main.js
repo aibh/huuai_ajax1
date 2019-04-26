@@ -20,6 +20,31 @@ $(document).ready(function(){
         getInput("Sửa người dùng", "Cập nhật", "btnCapNhat");
     })
 
+    $('body').delegate('.btnSua', "click", function(){
+        var taiKhoan = $(this).data('taikhoan');
+        var vitri = nguoiDungService.layViTriNguoiDung(taiKhoan);
+        var danhSachNguoiDung = JSON.parse(localStorage.getItem("danhSachNguoiDung"));
+        // // cach toi uu hon
+        // var nguoiDung = nguoiDungService.layThongTinNguoiDung(taiKhoan);
+
+        $('#TaiKhoan').val(taiKhoan);
+        $('#HoTen').val(nguoiDung.HoTen);
+        $('#MatKhau').val(nguoiDung.MatKhau);
+        $('#Email').val(nguoiDung.Email);
+        $('#SoDienThoai').val(nguoiDung.SoDT);
+        $('#loaiNguoiDung').val(nguoiDung.loaiNguoiDung);
+
+    })
+// Lay thong tin nguoi dung
+    // this.LayThongTinNguoiDung = function(taiKhoan){
+    //     var danhSachNguoiDung = JSON.parse(localStorage.getItem("danhSachNguoiDung"));
+    //     return danhSachNguoiDung.find(function(item){
+    //         return item.TaiKhoan === taiKhoan;
+                
+    //     })
+    // }
+
+
     $("body").delegate("#btnThem", "click", function(){
         var taiKhoan = $("#TaiKhoan").val();
         var hoTen = $("#HoTen").val();
@@ -69,7 +94,7 @@ $(document).ready(function(){
                      <td>${item.SoDT}</td>
                      <td>${item.TenLoaiNguoiDung}</td>
                      <td>
-                        <button class="btn btn-success btnSua" data-toggle="modal" data-target="#myModal">Sửa</button>
+                        <button class="btn btn-success btnSua" data-taikhoan="${item.TaiKhoan}" data-toggle="modal" data-target="#myModal">Sửa</button>
                         <button class="btn btn-danger btnXoa" data-taikhoan="${item.TaiKhoan}">Xóa</button>
                      </td>
                  </tr>
