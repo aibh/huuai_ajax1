@@ -1,10 +1,5 @@
 $(document).ready(function(){
     var nguoiDungService = new NguoiDungService();
-     
-    function moiTaoBranch(){
-        
-    }
-
     layDanhNguoiDung();
 
     function getInput(title, btnTitle, btnID){
